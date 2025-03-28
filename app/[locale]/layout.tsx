@@ -5,10 +5,11 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { Lato, Raleway } from "next/font/google";
 import { notFound } from "next/navigation";
+import { ReactNode } from "react";
 import { AppProvider } from "./AppProvider";
-import "./globals.css";
-import Footer from "@/layout/footer";
 import Header from "@/layout/header";
+import Footer from "@/layout/footer";
+import "./globals.css";
 
 // Yazılar
 const lato = Lato({
@@ -20,30 +21,42 @@ const lato = Lato({
 
 // Başlıklar
 const raleway = Raleway({
-  weight: ["400", "600", "700"],
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-raleway",
 });
 
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "tr" }];
+}
+
 export default async function LocaleLayout({
   children,
-  params,
+  params: { locale },
 }: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  children: ReactNode;
+  params: { locale: string };
 }) {
   // Ensure that the incoming `locale` is valid
-  const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  let messages;
+
+  try {
+    messages = (await import(`../../messages/${locale}.json`)).default;
+  } catch {
     notFound();
   }
 
   return (
     <html
       lang={locale}
-      className={`${lato.className} ${lato.variable} ${raleway.className} ${raleway.variable}`}
+      className={`${lato.className} ${lato.variable} ${raleway.variable} ${raleway.className}`}
     >
       <body>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>
               <AppProvider>
