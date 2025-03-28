@@ -7,6 +7,8 @@ import { Lato, Raleway } from "next/font/google";
 import { notFound } from "next/navigation";
 import { AppProvider } from "./AppProvider";
 import "./globals.css";
+import Footer from "@/layout/footer";
+import Header from "@/layout/header";
 
 // Yazılar
 const lato = Lato({
@@ -18,7 +20,7 @@ const lato = Lato({
 
 // Başlıklar
 const raleway = Raleway({
-  weight: ["400", "700"],
+  weight: ["400", "600", "700"],
   variable: "--font-raleway",
 });
 
@@ -44,7 +46,11 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>
-              <AppProvider>{children}</AppProvider>
+              <AppProvider>
+                <Header />
+                {children}
+                <Footer />
+              </AppProvider>
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>

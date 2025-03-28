@@ -1,30 +1,49 @@
 @import "tailwindcss";
 
+
 @theme {
-  --color-primary: #f1c;
+
+  /* RENKLER */
+  
+  --color-primary: #497CD0;
+  --color-secondary: #D09D49;
+  --color-light: #fdfcfc;
+  --color-dark: #202124;
+  --color-disabled: #F1F3F4;
+  
+  /* FONTLAR */
+
   --font-lato: var(--font-lato);
+  --font-raleway: var(--font-raleway);
 }
 
 @layer base {
+  body {
+   @apply text-dark font-lato text-base bg-light;
+  }
   h1 {
-    @apply text-4xl font-bold leading-tight font-lato;
+    @apply text-4xl font-bold leading-tight font-raleway;
   }
   h2 {
-    @apply text-3xl font-semibold leading-snug;
+    @apply text-3xl font-semibold leading-snug font-raleway;
   }
   h3 {
-    @apply text-2xl font-semibold leading-snug;
+    @apply text-2xl font-semibold leading-snug font-raleway;
   }
   h4 {
-    @apply text-xl font-medium leading-relaxed;
+    @apply text-xl font-medium leading-relaxed font-raleway;
   }
   h5 {
-    @apply text-lg font-medium leading-relaxed;
+    @apply text-lg font-medium leading-relaxed font-raleway;
   }
   h6 {
-    @apply text-base font-medium leading-relaxed;
+    @apply text-base font-medium leading-relaxed font-raleway;
   }
   p {
-    @apply text-base leading-relaxed;
+    @apply text-sm leading-relaxed font-lato;
   }
+  caption {
+    @apply text-xs;
+  }
+  
 }

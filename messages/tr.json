@@ -1,6 +1,75 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "Home": {
+    "where-to": "Nereye?",
+    "where-to-cafe": "Nerede Kahve İçilir?",
+    "where-to-todo": "Nerede Gezilir?",
+    "where-to-restaurants": "Nerede Yenir?",
+    "filter": {
+      "all": "Tümünde Ara",
+      "cafe": "Kafeler",
+      "to-do": "Yapılacak Şeyler",
+      "restaurants": "Restoranlar"
+    },
+    "banner": {
+      "title": "Seyahatinizi istediğiniz gibi planlayın",
+      "description": "Seyahatler sayesinde favorilerinizi kaydedin, seyahat programları hazırlayın ve daha fazlasını yapın."
+    }
+  },
+  "Header": {
+    "search": "Ara",
+    "search-placeholder": "Gezilecek yerler, yapılacak şeyler, oteller...",
+    "search-cafe-placeholder": "Kafe ara...",
+    "search-todo-placeholder": "Yapılacak şeyler ara...",
+    "search-restaurant-placeholder": "Restoran ara...",
+    "login": "Giriş yap",
+    "register": "Kayıt ol",
+    "menu": {
+      "discover": "Keşfedin",
+      "travels": "Seyahatler",
+      "comment": "Yorum Yazın"
+    }
+  },
+  "Footer": {
+    "about": {
+      "title": "İstanbulRota Hakkında",
+      "aboutUs": "Hakkımızda",
+      "press": "Basın",
+      "resources": "Kaynaklar ve Politikalar",
+      "careers": "Kariyer",
+      "trust": "Güvenlik ve Emniyet",
+      "contact": "Bize ulaşın",
+      "accessibility": "Erişilebilirlik Açıklaması"
+    },
+    "explore": {
+      "title": "Keşfedin",
+      "writeReview": "Bir yorum yazın",
+      "addPlace": "Yer Ekle",
+      "join": "Katılın",
+      "travelers": "Travellers' Choice",
+      "help": "Yardım Merkezi"
+    },
+    "business": {
+      "title": "Bizimle Çalışın",
+      "owners": "İşletme Sahipleri",
+      "advantage": "İş Avantajı",
+      "sponsored": "Sponsorlu Reklam Yerleştirmeleri",
+      "advertise": "Bize Reklam Verin",
+      "api": "İçerik API'mıza erişin"
+    },
+    "app": {
+      "download": "Uygulamayı İndirin",
+      "ios": "iPhone Uygulaması",
+      "android": "Android Uygulaması"
+    },
+    "legal": {
+      "terms": "Kullanım Koşulları",
+      "privacy": "Gizlilik ve Tanımlama Bilgileri Bildirimi",
+      "cookie": "Tanımlama bilgisi onayı",
+      "sitemap": "Site Haritası",
+      "howItWorks": "Site nasıl çalışır?",
+      "contact": "Bize ulaşın"
+    },
+    "copyright": "© {year} İstanbulRota LLC Tüm hakları saklıdır.",
+    "languageInfo": "Web sitemizin bu sürümü, Türkçe (Türkiye) konuşan kişilere yöneliktir. Başka bir ülke veya bölgede ikamet ediyorsanız lütfen ülkeniz veya bölgeniz için uygun olan İstanbulRota sürümünü açılır menüden seçin."
   }
 }

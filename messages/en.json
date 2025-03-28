@@ -1,6 +1,75 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "Home": {
+    "where-to": "Where to?",
+    "where-to-cafe": "Where to Drink Coffee?",
+    "where-to-todo": "Where to Go?",
+    "where-to-restaurants": "Where to Eat?",
+    "filter": {
+      "all": "Search All",
+      "cafe": "Cafes",
+      "to-do": "Things to Do",
+      "restaurants": "Restaurants"
+    },
+    "banner": {
+      "title": "Plan your trip the way you want",
+      "description": "Save your favourites, create itineraries and more with Travels."
+    }
+  },
+  "Header": {
+    "search": "Search",
+    "search-placeholder": "Places to visit, things to do, hotels...",
+    "search-cafe-placeholder": "Search cafes...",
+    "search-todo-placeholder": "Search things to do...",
+    "search-restaurant-placeholder": "Search restaurants...",
+    "login": "Sign in",
+    "register": "Register",
+    "menu": {
+      "discover": "Discover",
+      "travels": "Trips",
+      "comment": "Review"
+    }
+  },
+  "Footer": {
+    "about": {
+      "title": "About IstanbulRota",
+      "aboutUs": "About Us",
+      "press": "Press",
+      "resources": "Resources and Policies",
+      "careers": "Careers",
+      "trust": "Trust & Safety",
+      "contact": "Contact Us",
+      "accessibility": "Accessibility Statement"
+    },
+    "explore": {
+      "title": "Explore",
+      "writeReview": "Write a Review",
+      "addPlace": "Add a Place",
+      "join": "Join",
+      "travelers": "Travellers' Choice",
+      "help": "Help Center"
+    },
+    "business": {
+      "title": "Do Business With Us",
+      "owners": "Business Owners",
+      "advantage": "Business Advantage",
+      "sponsored": "Sponsored Placements",
+      "advertise": "Advertise with Us",
+      "api": "Access Our Content API"
+    },
+    "app": {
+      "download": "Get the App",
+      "ios": "iPhone App",
+      "android": "Android App"
+    },
+    "legal": {
+      "terms": "Terms of Use",
+      "privacy": "Privacy and Cookies Statement",
+      "cookie": "Cookie consent",
+      "sitemap": "Sitemap",
+      "howItWorks": "How the Site Works",
+      "contact": "Contact Us"
+    },
+    "copyright": "© {year} IstanbulRota LLC All rights reserved.",
+    "languageInfo": "This version of our website is dedicated to English speakers. If you reside in another country or region, please select the appropriate version of IstanbulRota for your country or region from the dropdown menu."
   }
 }
