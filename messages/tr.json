@@ -71,5 +71,18 @@
     },
     "copyright": "© {year} İstanbulRota LLC Tüm hakları saklıdır.",
     "languageInfo": "Web sitemizin bu sürümü, Türkçe (Türkiye) konuşan kişilere yöneliktir. Başka bir ülke veya bölgede ikamet ediyorsanız lütfen ülkeniz veya bölgeniz için uygun olan İstanbulRota sürümünü açılır menüden seçin."
+  },
+  "District": {
+    "businesses": "İşletmeler",
+    "return-back": "semtine geri dön"
+  },
+  "Semtler": {
+    "title": "Semtler",
+    "isletmeler": "İşletmeler"
+  },
+  "Isletme": {
+    "iletisim": "İletişim Bilgileri",
+    "calismaSaatleri": "Çalışma Saatleri",
+    "ozellikler": "Özellikler"
   }
 }

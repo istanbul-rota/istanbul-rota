@@ -71,5 +71,18 @@
     },
     "copyright": "© {year} IstanbulRota LLC All rights reserved.",
     "languageInfo": "This version of our website is dedicated to English speakers. If you reside in another country or region, please select the appropriate version of IstanbulRota for your country or region from the dropdown menu."
+  },
+  "District": {
+    "businesses": "Businesses",
+    "return-back": "return back to"
+  },
+  "Semtler": {
+    "title": "Districts",
+    "isletmeler": "Businesses"
+  },
+  "Isletme": {
+    "iletisim": "Contact Information",
+    "calismaSaatleri": "Opening Hours",
+    "ozellikler": "Features"
   }
 }
