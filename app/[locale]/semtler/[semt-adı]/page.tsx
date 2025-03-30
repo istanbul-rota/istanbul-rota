@@ -6,13 +6,14 @@ import { Isletme } from "@/types";
 import { getTranslations } from "next-intl/server";
 
 interface SemtPageProps {
-  params: {
+  params: Promise<{
     "semt-adı": string;
-  };
+  }>;
 }
 
 export default async function SemtPage({ params }: SemtPageProps) {
-  const districtName = (await params)["semt-adı"];
+  const resolvedParams = await params;
+  const districtName = resolvedParams["semt-adı"];
 
   const semt = await getDistrictBySlug(districtName);
   const t = await getTranslations();

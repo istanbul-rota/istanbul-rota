@@ -2,19 +2,18 @@ import { getIsletmeBySlug } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Isletme } from "@/types";
 import { getTranslations } from "next-intl/server";
 import { PortableText } from "next-sanity";
 
 interface IsletmePageProps {
-  params: {
-    "semt-adı": string;
+  params: Promise<{
     "isletme-adi": string;
-  };
+  }>;
 }
 
 export default async function IsletmePage({ params }: IsletmePageProps) {
-  const isletme = await getIsletmeBySlug((await params)["isletme-adi"]);
+  const resolvedParams = await params;
+  const isletme = await getIsletmeBySlug(resolvedParams["isletme-adi"]);
   const t = await getTranslations();
 
   if (!isletme) {
