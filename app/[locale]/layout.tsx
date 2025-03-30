@@ -32,11 +32,13 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: ReactNode;
   params: { locale: string };
 }) {
+  const { locale } = await params;
+
   // Ensure that the incoming `locale` is valid
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -45,7 +47,7 @@ export default async function LocaleLayout({
   let messages;
 
   try {
-    messages = (await import(`../../../messages/${locale}.json`)).default;
+    messages = (await import(`../../messages/${locale}.json`)).default;
   } catch {
     notFound();
   }

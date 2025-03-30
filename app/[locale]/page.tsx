@@ -91,6 +91,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Link href={"/semtler"}>
+        <h1>semtler</h1>
+      </Link>
     </div>
   );
 }
