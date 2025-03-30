@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# İstanbulRota
 
-## Getting Started
+İstanbulRota, İstanbul'un tüm güzelliklerini keşfetmenizi sağlayan kapsamlı bir gezi rehberi platformudur. Semtler, mekanlar, etkinlikler ve daha fazlası hakkında detaylı bilgiler sunar.
 
-First, run the development server:
+## 🚀 Özellikler
+
+- 🌍 Çoklu dil desteği (Türkçe/İngilizce)
+- 🗺️ İnteraktif harita entegrasyonu
+- 📱 Mobil uyumlu tasarım
+- 🔍 Gelişmiş arama ve filtreleme
+- 📸 Kullanıcı fotoğraf paylaşımı
+- ⭐ Kullanıcı yorumları ve puanlama sistemi
+- 🎫 Etkinlik ve bilet yönetimi
+- 📝 Blog ve rehber içerikleri
+
+## 🛠️ Teknolojiler
+
+- [Next.js 14](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Tip güvenliği
+- [Tailwind CSS](https://tailwindcss.com/) - Stil framework'ü
+- [Sanity.io](https://www.sanity.io/) - Headless CMS
+- [next-intl](https://next-intl-docs.vercel.app/) - Çoklu dil desteği
+- [Material UI](https://mui.com/) - UI komponentleri
+
+## 📦 Kurulum
+
+1. Projeyi klonlayın:
+
+```bash
+git clone https://github.com/yourusername/istanbul-rota.git
+cd istanbul-rota
+```
+
+2. Bağımlılıkları yükleyin:
+
+```bash
+npm install
+# veya
+yarn install
+# veya
+pnpm install
+```
+
+3. Geliştirme sunucusunu başlatın:
 
 ```bash
 npm run dev
-# or
+# veya
 yarn dev
-# or
+# veya
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açın.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌐 Ortam Değişkenleri
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Projeyi çalıştırmak için aşağıdaki ortam değişkenlerini `.env.local` dosyasında tanımlamanız gerekmektedir:
 
-## Learn More
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-03-13
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📚 Dokümantasyon
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Klasör Yapısı](SITE-MAP.md#klasör-yapısı) - Proje klasör organizasyonu
+- [Sayfa Yapıları](SITE-MAP.md#sayfa-yapıları) - Her sayfanın içerik ve özellikleri
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Tasarım
 
-## Deploy on Vercel
+Proje, modern ve kullanıcı dostu bir arayüz sunmak için aşağıdaki tasarım prensiplerini takip eder:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Minimalist ve temiz tasarım
+- Kolay navigasyon
+- Hızlı yükleme süreleri
+- Responsive tasarım
+- Erişilebilirlik standartları
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Katkıda Bulunma
+
+1. Bu depoyu fork edin
+2. Yeni bir branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Değişikliklerinizi commit edin (`git commit -m 'feat: Add amazing feature'`)
+4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
+5. Bir Pull Request oluşturun
+
+## 📝 Lisans
+
+Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+
+## 📞 İletişim
+
+- Website: [istanbulrota.com](https://istanbulrota.com)
+- Email: info@istanbulrota.com
+- Twitter: [@istanbulrota](https://twitter.com/istanbulrota)
+- Instagram: [@istanbulrota](https://instagram.com/istanbulrota)
+
+## 🙏 Teşekkürler
+
+- [Next.js](https://nextjs.org/) ekibine
+- [Sanity.io](https://www.sanity.io/) ekibine
+- Tüm katkıda bulunanlara
