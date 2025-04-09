@@ -1,6 +1,6 @@
 import { createClient } from "next-sanity";
 import { groq } from "next-sanity";
-import { Semt, Isletme } from "@/types";
+import { District, Business, SanityImage } from "@/types";
 import imageUrlBuilder from "@sanity/image-url";
 
 const client = createClient({
@@ -12,41 +12,48 @@ const client = createClient({
 
 const builder = imageUrlBuilder(client);
 
-function urlFor(source: any) {
+function urlFor(source: SanityImage) {
   return builder.image(source);
 }
 
-// Tüm semtleri getir
-export async function getAllDistricts(): Promise<Semt[]> {
-  const semts = await client.fetch(
-    groq`*[_type == "semt"] | order(title asc) {
+// GET all districts
+export async function getAllDistricts(lang: string): Promise<District[]> {
+  const districts = await client.fetch(
+    groq`*[_type == "district"] | order(title asc) {
       _id,
       title,
       slug,
       description,
       mainImage,
       region,
-      isActive
+      isActive,
+      "award": award->{
+        "title": titles[language->code == $lang][0].title,
+        "description": descriptions[language->code == $lang][0].description
+      }
     }`,
+    { lang },
   );
 
-  return semts.map((semt: any) => ({
-    ...semt,
-    mainImage: semt.mainImage
+  return districts.map((district: District) => ({
+    ...district,
+    award: district.award,
+    mainImage: district.mainImage
       ? {
-          url: urlFor(semt.mainImage).url(),
-          alt: semt.mainImage.alt || semt.title,
+          url: urlFor(district.mainImage).url(),
+          alt: district.mainImage.alt || district.title,
         }
       : null,
   }));
 }
 
-// Tek bir semti getir
+// GET one district
 export async function getDistrictBySlug(
   slug: string,
-): Promise<Semt & { isletmeler: Isletme[] }> {
-  const semt = await client.fetch(
-    groq`*[_type == "semt" && slug.current == $slug][0] {
+  lang: string,
+): Promise<District & { businesses: Business[] }> {
+  const district = await client.fetch(
+    groq`*[_type == "district" && slug.current == $slug][0] {
       _id,
       title,
       slug,
@@ -56,7 +63,7 @@ export async function getDistrictBySlug(
       location,
       content,
       isActive,
-      "isletmeler": *[_type == "isletme" && references(^._id)] {
+      "businesses": *[_type == "business" && references(^._id)] {
         _id,
         title,
         slug,
@@ -64,42 +71,45 @@ export async function getDistrictBySlug(
         mainImage,
         type,
         isActive
+      },
+      "award": award->{
+        "title": titles[language->code == $lang][0].title,
+        "description": descriptions[language->code == $lang][0].description
       }
     }`,
-    { slug },
+    { slug, lang },
   );
 
   return {
-    ...semt,
-    mainImage: semt.mainImage
+    ...district,
+    mainImage: district.mainImage
       ? {
-          url: urlFor(semt.mainImage).url(),
-          alt: semt.mainImage.alt || semt.title,
+          url: urlFor(district.mainImage).url(),
+          alt: district.mainImage.alt || district.title,
         }
       : null,
-    isletmeler: semt.isletmeler.map((isletme: any) => ({
-      ...isletme,
-      mainImage: isletme.mainImage
+    businesses: district.businesses.map((business: Business) => ({
+      ...business,
+      mainImage: business.mainImage
         ? {
-            url: urlFor(isletme.mainImage).url(),
-            alt: isletme.mainImage.alt || isletme.title,
+            url: urlFor(business.mainImage).url(),
+            alt: business.mainImage.alt || business.title,
           }
         : null,
     })),
   };
 }
 
-// Tek bir işletmeyi getir
-export async function getIsletmeBySlug(slug: string): Promise<Isletme> {
-  const isletme = await client.fetch(
-    groq`*[_type == "isletme" && slug.current == $slug][0] {
+// GET one business
+export async function getBusinessBySlug(
+  slug: string,
+  lang: string,
+): Promise<Business> {
+  const business = await client.fetch(
+    groq`*[_type == "business" && slug.current == $slug][0] {
       _id,
       title,
       slug,
-      description,
-      content,
-      mainImage,
-      images,
       type,
       address,
       location,
@@ -108,26 +118,64 @@ export async function getIsletmeBySlug(slug: string): Promise<Isletme> {
       openingHours,
       features,
       isActive,
-      "semt": semt-> {
+      mainImage,
+      images,
+      "description": descriptions[language->code == $lang][0].description,
+      "content": contents[language->code == $lang][0].content,
+      "district": district-> {
         _id,
         title,
         slug
       }
     }`,
-    { slug },
+    { slug, lang },
   );
 
   return {
-    ...isletme,
-    mainImage: isletme.mainImage
+    ...business,
+    mainImage: business.mainImage
       ? {
-          url: urlFor(isletme.mainImage).url(),
-          alt: isletme.mainImage.alt || isletme.title,
+          url: urlFor(business.mainImage).url(),
+          alt: business.mainImage.alt || business.title,
         }
       : null,
-    images: isletme.images?.map((image: any) => ({
+    images: business.images?.map((image: SanityImage) => ({
       url: urlFor(image).url(),
-      alt: image.alt || isletme.title,
+      alt: image.alt || business.title,
     })),
   };
+}
+
+export async function getAllLanguages(): Promise<
+  { _id: string; language: string; code: string }[]
+> {
+  const languages = await client.fetch(
+    groq`*[_type == "language" && isActive == true]{
+      _id,
+      language,
+      code
+    } | order(language asc)`,
+  );
+
+  return languages;
+}
+
+export async function getAllCurrencies(): Promise<
+  {
+    _id: string;
+    label: string;
+    code: string;
+    symbol: string;
+    default?: boolean;
+  }[]
+> {
+  return await client.fetch(
+    groq`*[_type == "currency"] | order(label asc) {
+      _id,
+      label,
+      code,
+      symbol,
+      default
+    }`,
+  );
 }
