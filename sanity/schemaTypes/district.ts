@@ -1,13 +1,13 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "semt",
-  title: "Semt",
+  name: "district",
+  title: "District",
   type: "document",
   fields: [
     defineField({
       name: "title",
-      title: "Semt Adı",
+      title: "District Name",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
@@ -23,13 +23,13 @@ export default defineType({
     }),
     defineField({
       name: "description",
-      title: "Açıklama",
+      title: "Description",
       type: "text",
-      description: "Semt hakkında kısa bir açıklama",
+      description: "A brief description of the neighbourhood",
     }),
     defineField({
       name: "mainImage",
-      title: "Ana Görsel",
+      title: "Main Image",
       type: "image",
       options: {
         hotspot: true,
@@ -37,38 +37,44 @@ export default defineType({
     }),
     defineField({
       name: "images",
-      title: "Görseller",
+      title: "Images",
       type: "array",
       of: [{ type: "image" }],
     }),
     defineField({
       name: "region",
-      title: "Bölge",
+      title: "Region",
       type: "string",
       options: {
         list: [
-          { title: "Avrupa Yakası", value: "avrupa" },
-          { title: "Anadolu Yakası", value: "anadolu" },
+          { title: "European Side", value: "europe" },
+          { title: "Anatolia Side", value: "anatolia" },
         ],
       },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "award",
+      title: "Award",
+      type: "reference",
+      to: [{ type: "award" }],
+    }),
+    defineField({
       name: "location",
-      title: "Konum",
+      title: "Location",
       type: "geopoint",
-      description: "Semtin harita üzerindeki konumu",
+      description: "The location of the district",
     }),
     defineField({
       name: "content",
-      title: "İçerik",
+      title: "Content",
       type: "array",
       of: [{ type: "block" }],
-      description: "Semt hakkında detaylı bilgi",
+      description: "Detailed information about the district",
     }),
     defineField({
       name: "isActive",
-      title: "Aktif",
+      title: "Active",
       type: "boolean",
       initialValue: true,
     }),
@@ -83,7 +89,7 @@ export default defineType({
       return {
         title,
         media,
-        subtitle: region === "avrupa" ? "Avrupa Yakası" : "Anadolu Yakası",
+        subtitle: region === "europe" ? "European Side" : "Anatolian Side",
       };
     },
   },

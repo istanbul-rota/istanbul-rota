@@ -4,8 +4,11 @@ import { blockContentType } from "./blockContentType";
 import { categoryType } from "./categoryType";
 import { postType } from "./postType";
 import { authorType } from "./authorType";
-import semtType from "./semtType";
-import isletmeType from "./isletmeType";
+import districtType from "./district";
+import businessType from "./business";
+import awardType from "./award";
+import languageType from "./language";
+import currencyType from "./currency";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -13,7 +16,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     categoryType,
     postType,
     authorType,
-    isletmeType,
-    semtType,
+    districtType,
+    businessType,
+    awardType,
+    languageType,
+    currencyType,
   ],
 };
