@@ -11,7 +11,6 @@ import { useState } from "react";
 import { Filter } from "@/types/Filter";
 import { Slider } from "@/components/slider";
 import { District } from "@/types";
-import { Section } from "@/components/section";
 
 const ICON_SIZE = 24;
 
