@@ -1,4 +1,18 @@
 {
+  "General": {
+    "tradesmen": "esnaf",
+    "cafe": "kafe",
+    "restaurant": "restoran",
+    "hotel": "otel",
+    "bar": "bar",
+    "sunday": "pazar",
+    "monday": "pazartesi",
+    "tuesday": "salı",
+    "wednesday": "çarşamba",
+    "thursday": "perşembe",
+    "friday": "cuma",
+    "saturday": "cumartesi"
+  },
   "Home": {
     "where-to": "Nereye?",
     "where-to-cafe": "Nerede Kahve İçilir?",
@@ -13,7 +27,9 @@
     "banner": {
       "title": "Seyahatinizi istediğiniz gibi planlayın",
       "description": "Seyahatler sayesinde favorilerinizi kaydedin, seyahat programları hazırlayın ve daha fazlasını yapın."
-    }
+    },
+    "discover-istanbul": "İstanbulun en güzel semtlerini keşfedin",
+    "discover-istanbul-subtitle": "{year} yılının en güncel rotalarını izleyerek istanbulun keyfini çıkarın"
   },
   "Header": {
     "search": "Ara",
@@ -27,6 +43,14 @@
       "discover": "Keşfedin",
       "travels": "Seyahatler",
       "comment": "Yorum Yazın"
+    },
+    "language-title": "Dil Seçenekleri",
+    "preferences": {
+      "regionLanguage": "Bölge Dili",
+      "currency": "Para Birimi",
+      "suggested": "Önerilen",
+      "selectedLanguage": "Seçilen Bölge Dili",
+      "selectCurrency": "Seçilen Para Birimi"
     }
   },
   "Footer": {
@@ -74,15 +98,19 @@
   },
   "District": {
     "businesses": "İşletmeler",
-    "return-back": "semtine geri dön"
+    "return-back": "semtine geri dön",
+    "europe": "Avrupa Yakası",
+    "anatolia": "Anadolu Yakası"
   },
   "Semtler": {
     "title": "Semtler",
     "isletmeler": "İşletmeler"
   },
-  "Isletme": {
-    "iletisim": "İletişim Bilgileri",
-    "calismaSaatleri": "Çalışma Saatleri",
-    "ozellikler": "Özellikler"
+  "Business": {
+    "contact": "İletişim Bilgileri",
+    "working-hours": "Çalışma Saatleri",
+    "features": "Özellikler",
+    "closed": "Kapalı",
+    "open": "Şu an açık"
   }
 }

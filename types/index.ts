@@ -1,3 +1,13 @@
+import { PortableTextBlock } from "sanity";
+
+export type Region = "anatolia" | "europe";
+export type BusinessType =
+  | "restaurant"
+  | "cafe"
+  | "bar"
+  | "hotel"
+  | "tradesmen";
+
 export interface SanityImage {
   url: string;
   alt?: string;
@@ -13,7 +23,17 @@ export interface OpeningHours {
   sunday?: string;
 }
 
-export interface Semt {
+export interface Award {
+  title: string;
+  description: string;
+}
+
+export interface Location {
+  lat: number;
+  lng: number;
+}
+
+export interface District {
   _id: string;
   title: string;
   slug: {
@@ -21,26 +41,24 @@ export interface Semt {
   };
   description: string;
   mainImage: SanityImage | null;
-  region: "avrupa" | "anadolu";
-  location?: {
-    lat: number;
-    lng: number;
-  };
-  content?: any[];
+  region: Region;
+  award?: Award;
+  location?: Location;
+  content: PortableTextBlock[];
   isActive: boolean;
 }
 
-export interface Isletme {
+export interface Business {
   _id: string;
   title: string;
   slug: {
     current: string;
   };
   description: string;
-  content: any[];
+  content: PortableTextBlock[];
   mainImage: SanityImage | null;
   images?: SanityImage[];
-  type: "restoran" | "kafe" | "bar" | "otel" | "esnaf";
+  type: BusinessType;
   address: string;
   location?: {
     lat: number;
@@ -51,7 +69,7 @@ export interface Isletme {
   openingHours?: OpeningHours;
   features?: string[];
   isActive: boolean;
-  semt: {
+  district: {
     _id: string;
     title: string;
     slug: {

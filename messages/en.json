@@ -1,4 +1,18 @@
 {
+  "General": {
+    "tradesmen": "tradesmen",
+    "cafe": "cafe",
+    "restaurant": "restaurant",
+    "hotel": "hotel",
+    "bar": "bar",
+    "sunday": "sunday",
+    "monday": "monday",
+    "tuesday": "tuesday",
+    "wednesday": "wednesday",
+    "thursday": "thursday",
+    "friday": "friday",
+    "saturday": "saturday"
+  },
   "Home": {
     "where-to": "Where to?",
     "where-to-cafe": "Where to Drink Coffee?",
@@ -13,7 +27,9 @@
     "banner": {
       "title": "Plan your trip the way you want",
       "description": "Save your favourites, create itineraries and more with Travels."
-    }
+    },
+    "discover-istanbul": "Discover Istanbul's most beautiful neighborhoods",
+    "discover-istanbul-subtitle": "Enjoy Istanbul in {year} by following the most up-to-date routes of the year {year}"
   },
   "Header": {
     "search": "Search",
@@ -27,6 +43,14 @@
       "discover": "Discover",
       "travels": "Trips",
       "comment": "Review"
+    },
+    "language-title": "Language Preferences",
+    "preferences": {
+      "regionLanguage": "Region Language",
+      "currency": "Currency",
+      "suggested": "Suggested",
+      "selectedLanguage": "Selected Language",
+      "selectCurrency": "Selected Currency"
     }
   },
   "Footer": {
@@ -74,15 +98,19 @@
   },
   "District": {
     "businesses": "Businesses",
-    "return-back": "return back to"
+    "return-back": "return back to",
+    "europe": "European Side",
+    "anatolia": "Anatolian Side"
   },
-  "Semtler": {
+  "Districts": {
     "title": "Districts",
-    "isletmeler": "Businesses"
+    "businesses": "Businesses"
   },
-  "Isletme": {
-    "iletisim": "Contact Information",
-    "calismaSaatleri": "Opening Hours",
-    "ozellikler": "Features"
+  "Business": {
+    "contact": "Contact Information",
+    "working-hours": "Opening Hours",
+    "features": "Features",
+    "closed": "Closed",
+    "open": "Open Now"
   }
 }
