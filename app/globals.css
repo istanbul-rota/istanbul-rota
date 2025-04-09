@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Swiper Özelleştirmeleri */
+.swiper {
+  overflow: visible !important;
+}
+
+.swiper-pagination {
+  bottom: -30px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: #d1d5db !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #111827 !important;
+}
+
+/* Hover Efektleri */
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+/* Gradient ve Gölge Efektleri */
+.card-shadow {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Özel Navigasyon Butonları */
+.swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Swiper Özelleştirmeleri */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+  background: rgba(0, 0, 0, 0.3);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px !important;
+}
+
+.swiper-pagination-bullet {
+  background: #666 !important;
+  opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+  background: #000 !important;
+  opacity: 1;
+}
+
+/* Hover Efektleri */
+.region-card:hover .region-card-image {
+  transform: scale(1.05);
+}
+
+.region-card-image {
+  transition: transform 0.3s ease-in-out;
+}

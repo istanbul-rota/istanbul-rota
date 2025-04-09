@@ -1,11 +1,18 @@
 import { getAllDistricts } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import Link from "next/link";
-import { Semt } from "@/types";
+import { District } from "@/types";
 import { getTranslations } from "next-intl/server";
 
-export default async function SemtlerPage() {
-  const semts = await getAllDistricts();
+interface PageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function DistrictsPage({ params }: PageProps) {
+  const { locale } = await params;
+  const semts = await getAllDistricts(locale);
   const t = await getTranslations();
 
   return (
@@ -13,7 +20,7 @@ export default async function SemtlerPage() {
       <h1 className="mb-8 text-4xl font-bold">{t("Semtler.title")}</h1>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {semts.map((semt: Semt) => (
+        {semts.map((semt: District) => (
           <Link
             key={semt._id}
             href={`/semtler/${semt.slug.current}`}
@@ -34,9 +41,7 @@ export default async function SemtlerPage() {
               <p className="line-clamp-2 text-gray-600">{semt.description}</p>
               <div className="mt-2 flex items-center gap-2">
                 <span className="rounded-full bg-gray-100 px-2 py-1 text-sm">
-                  {semt.region === "avrupa"
-                    ? "Avrupa Yakası"
-                    : "Anadolu Yakası"}
+                  {semt.region}
                 </span>
               </div>
             </div>
