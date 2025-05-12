@@ -31,24 +31,38 @@ export const AwardBadge: React.FC<Props> = ({
   const id = open ? "award-popover" : undefined;
 
   return (
-    <div className="flex items-center justify-center gap-1 rounded-full bg-yellow-400 p-1 px-2">
-      <EmojiEventsIcon sx={{ fontSize: 16 }} />
-      <span className="text-xs font-medium">{award.title}</span>
+    <div className="inline-flex items-center gap-1.5 rounded-full bg-yellow-400/90 px-3 py-1.5 shadow-sm ring-1 ring-yellow-400">
+      <EmojiEventsIcon
+        sx={{
+          fontSize: 18,
+          color: "#000",
+        }}
+      />
       {isInfoVisible && (
         <>
           <IconButton
             onClick={handleClick}
             size="small"
-            disableRipple
-            disableFocusRipple
-            disableTouchRipple
+            sx={{
+              padding: 0,
+              marginLeft: "-2px",
+              "&:hover": {
+                background: "transparent",
+              },
+            }}
           >
-            <HelpOutlineIcon
-              sx={{
-                fontSize: 16,
-                color: "var(--color-primary)",
-              }}
-            />
+            <div className="flex items-center gap-1">
+              <span className="text-xs font-medium text-black">
+                {award.title}
+              </span>
+              <HelpOutlineIcon
+                sx={{
+                  fontSize: 16,
+                  color: "#000",
+                  opacity: 0.7,
+                }}
+              />
+            </div>
           </IconButton>
           <Popover
             id={id}
@@ -59,19 +73,29 @@ export const AwardBadge: React.FC<Props> = ({
               vertical: "bottom",
               horizontal: "left",
             }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
             slotProps={{
               paper: {
                 sx: {
                   p: 2,
-                  maxWidth: 250,
+                  maxWidth: 280,
                   borderRadius: 2,
+                  mt: 1,
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                 },
               },
             }}
           >
             <Box>
-              <Typography variant="h6">{award.title}</Typography>
-              <Typography variant="caption">{award.description}</Typography>
+              <Typography variant="subtitle1" fontWeight={600} gutterBottom>
+                {award.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {award.description}
+              </Typography>
             </Box>
           </Popover>
         </>

@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter, usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { EarthGlobeIcon } from "@sanity/icons";
@@ -11,19 +12,30 @@ import {
   Button,
   Tabs,
   Tab,
+  Menu,
+  MenuItem,
+  IconButton,
+  Avatar,
+  CircularProgress,
 } from "@mui/material";
 import { Link } from "@/i18n/navigation";
 import { getAllCurrencies, getAllLanguages } from "@/sanity/sanity-utils";
+import { createClient } from "@/utils/supabase/client";
+import { useUser } from "@/hooks/useUser";
 
 export default function Header() {
   const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const supabase = createClient();
 
   const [modalOpen, setModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState<"region" | "currency">("region");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const { user, loading: isAuthLoading } = useUser();
 
   const [languages, setLanguages] = useState<
     { _id: string; language: string; code: string }[]
@@ -80,6 +92,20 @@ export default function Header() {
     setModalOpen(false);
   };
 
+  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    handleMenuClose();
+    router.refresh();
+  };
+
   const topMenuItems = [
     { label: t("Header.menu.discover"), href: "/discover" },
     { label: t("Header.menu.travels"), href: "/trips" },
@@ -126,12 +152,55 @@ export default function Header() {
                 <EarthGlobeIcon fontSize={24} />
                 {locale.toUpperCase()}
               </button>
-              <Link
-                href="/auth"
-                className="h1 bg-dark text-light text-md rounded-4xl p-3 hover:opacity-85"
-              >
-                {t("Header.login")}
-              </Link>
+
+              {isAuthLoading ? (
+                <div className="flex items-center">
+                  <CircularProgress size={24} />
+                </div>
+              ) : user ? (
+                <>
+                  <IconButton
+                    onClick={handleMenuClick}
+                    className="ml-2"
+                    disableRipple
+                    disableFocusRipple
+                    disableTouchRipple
+                  >
+                    <Avatar
+                      sx={{ width: 36, height: 36 }}
+                      src={user?.user_metadata?.avatar_url}
+                    >
+                      {user?.user_metadata.username?.[0].toUpperCase()}
+                    </Avatar>
+                  </IconButton>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleMenuClose}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                  >
+                    <MenuItem onClick={handleMenuClose}>
+                      <Link
+                        href={`/user/${user?.user_metadata?.username}`}
+                        className="text-inherit no-underline"
+                      >
+                        {t("Header.profile")}
+                      </Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleLogout}>
+                      {t("Header.logout")}
+                    </MenuItem>
+                  </Menu>
+                </>
+              ) : (
+                <Link
+                  href="/sign-in"
+                  className="h1 bg-dark text-light text-md rounded-4xl p-3 hover:opacity-85"
+                >
+                  {t("Header.login")}
+                </Link>
+              )}
             </div>
           </div>
         </div>

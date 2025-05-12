@@ -179,3 +179,19 @@ export async function getAllCurrencies(): Promise<
     }`,
   );
 }
+
+// TODO : Add a function to get all posts
+export async function getUserPosts(userId: string): Promise<any[]> {
+  return client.fetch(
+    groq`*[_type == "post" && author._ref == $userId] | order(publishedAt desc) {
+      _id,
+      title,
+      slug,
+      mainImage,
+      publishedAt,
+      "categories": categories[]->{ title },
+      "author": author->{ name, image }
+    }`,
+    { userId },
+  );
+}
