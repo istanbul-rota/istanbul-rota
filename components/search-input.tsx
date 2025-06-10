@@ -51,7 +51,7 @@ export const SearchInput = ({ filter }: { filter: Filter }) => {
               fontSize: "16px",
             },
             endAdornment: (
-              <button className="bg-primary h-[48px] cursor-pointer rounded-[24px] px-6 hover:opacity-80">
+              <button className="bg-primary text-light h-[48px] cursor-pointer rounded-[24px] px-6 hover:opacity-80">
                 {t("Header.search")}
               </button>
             ),

@@ -22,6 +22,7 @@ import { Link } from "@/i18n/navigation";
 import { getAllCurrencies, getAllLanguages } from "@/sanity/sanity-utils";
 import { createClient } from "@/utils/supabase/client";
 import { useUser } from "@/hooks/useUser";
+import TrRota from "@/public/logo";
 
 export default function Header() {
   const t = useTranslations();
@@ -124,10 +125,7 @@ export default function Header() {
             <div className="flex items-center gap-6">
               <GiHamburgerMenu size={24} className="block lg:hidden" />
               <Link href="/" className="flex items-center">
-                <div className="bg-primary mr-2 h-12 w-12 rounded-full pt-0.5">
-                  <h1 className="text-center">IR</h1>
-                </div>
-                <h5>İstanbul Rota</h5>
+                <TrRota />
               </Link>
             </div>
 
